@@ -14,3 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', \App\Livewire\CocktailFinder::class);
+
+Route::get('search', function () {
+    return \App\Models\Cocktail::search(
+        'hangover',
+        function (\Meilisearch\Endpoints\Indexes $meilisearch, $query, $options) {
+            $options['facets'] = ['tags', 'category'];
+            return $meilisearch->search($query, $options);
+        }
+    )->raw();
+});
