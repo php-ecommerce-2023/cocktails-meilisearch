@@ -35,6 +35,10 @@ class ConsumeByRandom extends Command
     {
         $drinks = Http::get('www.thecocktaildb.com/api/json/v1/1/random.php')->json();
         $cocktail = collect(collect($drinks)->first())->first();
+        if(!$cocktail) {
+            $this->comment('No cocktails found');
+            return;
+        }
         $cocktail = \App\Models\Cocktail::updateOrCreate(
             ['id' => $cocktail['idDrink']],
             \App\Models\Cocktail::transform($cocktail)
