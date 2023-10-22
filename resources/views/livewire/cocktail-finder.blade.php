@@ -9,7 +9,7 @@
                 <h2>{{ $cocktail->name }}</h2>
                 <p>{{ $cocktail->instructions }}</p>
                 @foreach ($cocktail->ingredients as $ingredient => $quantity)
-                <p>{{ $ingredient }}: {{ $quantity }}</p>
+                    <p>{{ $ingredient }}: {{ $quantity }}</p>
                 @endforeach
             </aside>
         </div>

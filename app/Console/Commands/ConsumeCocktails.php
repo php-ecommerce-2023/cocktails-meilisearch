@@ -18,8 +18,8 @@ class ConsumeCocktails extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
-
+    protected $description = 'Fetches all cocktails from thecocktaildb.com alphabetically';
+    
     /**
      * Execute the console command.
      */
