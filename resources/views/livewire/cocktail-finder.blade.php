@@ -14,6 +14,7 @@
             </aside>
         </div>
         @endforeach
+        {{ $cocktails->links() }}
     </div>
 <style>
     .cocktail-finder{
@@ -44,6 +45,13 @@
     }
     .cocktail aside{
         width: 500px;
+    }
+
+    .w-5{
+        width: 0.5rem;
+    } 
+    .h-5{
+        height: 0.5rem;
     }
 </style>
 </div>
