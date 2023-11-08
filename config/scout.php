@@ -134,8 +134,14 @@ return [
         'key' => env('MEILISEARCH_KEY'),
         'index-settings' => [
             \App\Models\Cocktail::class => [
-                'filterableAttributes'=> ['id', 'name', 'tags', 'ingredients'],
-                'sortableAttributes' => ['created_at', 'modified_date'],
+                'filterableAttributes'=> ['id', 'name', 'tags', 'ingredients',  'category'],
+                'sortableAttributes' => ['name', 'created_at', 'modified_date'],
+                'faceting' => [
+                    'sortFacetValuesBy' => [
+                        'ingredients' => 'count',
+                        'category' => 'count'
+                    ]
+                ]
             ]
         ],
     ],

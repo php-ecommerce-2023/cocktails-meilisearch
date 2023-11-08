@@ -32,9 +32,24 @@ class Cocktail extends Model
      */
     public function toSearchableArray(): array
     {
-        $array = $this->toArray();
- 
-        $array['tags'] = explode(',', $array['tags']);
+        $array = [
+            'name' => $this->name,
+            'category' => $this->category,
+            'instructions' => $this->instructions,
+            'image' => $this->image,
+            'mixing' => $this->ingredients
+        ];
+        
+        $array['tags'] = explode(',', $this->tags);
+
+        $array['ingredients'] = collect($this->ingredients)->map(function ($item, $key) {
+            return [
+                'name' => $key,
+                'quantity' => $item,
+            ];
+        })->toArray();
+
+        $array['ingredients'] = array_keys($this->ingredients);
  
         return $array;
     }
