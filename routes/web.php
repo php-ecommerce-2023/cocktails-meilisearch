@@ -14,3 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', \App\Livewire\CocktailFinder::class);
+
+Route::get('welcome', function(){
+    return view('welcome');
+});
